@@ -59,6 +59,7 @@ public extension FlowNavigator {
   /// Goes back to the root screen (index -1). The resulting screen count
   /// will be 0.
   func goBackToRoot() {
+    popToRootNotifier.send(())
     routes.goBackToRoot()
   }
 
@@ -163,6 +164,8 @@ public extension FlowNavigator {
   /// will be 0. Only screens that have been pushed will
   /// be popped.
   func popToRoot() {
+    popToRootNotifier.send(())
+
     routes.popToRoot()
   }
 
