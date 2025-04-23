@@ -59,13 +59,9 @@ public extension FlowNavigator {
   /// Goes back to the root screen (index -1). The resulting screen count
   /// will be 0.
   func goBackToRoot() {
-    popToRootNotifier.send(())
+      NotificationCenter.default.post(name: .willPopToRoot, object: nil)
 
-      DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-          self.routes.goBackToRoot()
-
-      }
-
+      self.routes.goBackToRoot()
   }
 
   /// Goes back to the topmost (most recently shown) screen in the stack
